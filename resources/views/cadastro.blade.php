@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+ ?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>

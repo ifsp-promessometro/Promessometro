@@ -1,93 +1,76 @@
 <?php 
-    if(isset($_POST['logar'])) {
+    $conn = mysql_connect ("mysql.promessometro.kinghost.net", "promessometro" , "alcino5096" ) or die (mysql_error());
+    mysql_select_db("promessometro", $conn) or die (mysql_error());
+?>  
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+    function LoginFailed(){
+
+
+
+        setTimeout("window.location='principal'",3000);
+
+
+    }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+<?php
+    
         $email = $_POST['email_validacao'];
         $senha = $_POST['senha_validacao'];
-        if(!empty($email && $senha)) {
-            $conn = mysql_connect ("localhost", "root" , "" );
-            mysql_select_db("promessometro", $conn);
 
-            $sql = "SELECT EMAIL, NOME, ID_TIPO_USUARIO FROM usuario WHERE (EMAIL = '$email') AND (SENHA = '$senha' ) ";
-            $res = mysql_query($sql);
-            $resultado = mysql_fetch_row($res);
+    
 
-            if(!empty($resultado)){
+            $sql = "SELECT * FROM usuario  WHERE (EMAIL = '$email') AND (SENHA = '$senha')" ;
+            $query = mysql_query($sql);
+            $res = mysql_fetch_array($query);
+            $row = mysql_num_rows($query);
+
+            
+
+            if($row == 1){
+
+               
+               
+        
                 session_start();
-                $_SESSION['ID_USUARIO'] = $resultado['ID_USUARIO'];
-                $_SESSION['NOME'] = $resultado['NOME'];
-                $_SESSION['ID_TIPO'] = $resultado['ID_TIPO_USUARIO'];
-                header('Location: logado.php');
+                $_SESSION['ID_USUARIO'] = $res['ID_USUARIO'];
+                $_SESSION['EMAIL'] = $res['EMAIL'];
+                $_SESSION['SENHA'] = $res['SENHA'];
+                $_SESSION['NOME'] = $res['NOME'];
+                $_SESSION['ID_CIDADE'] = $res['ID_CIDADE'];
+                $_SESSION['ID_TIPO_USUARIO'] = $res['ID_TIPO_USUARIO'];
+                $_SESSION['ID_OSA'] = $res['ID_OSA'];
+                $_SESSION['CARGO'] = $res['CARGO'];
+                $_SESSION['STATUS_ATIVIDADE'] = $res['STATUS_ATIVIDADE'];
+                $_SESSION['LOG'] = 1;
+
+
+                header("Location: principal");
+
+
             }
-            else {
-                echo "login ou senha inválidos";
+            else{
+                echo "Email ou Senha InvÃ¡lidos! Aguarde enquanto vocÃª Ã© redirecionado!";
+                echo "<script>LoginFailed()</script>";
             }
-        }
-        else {
-            echo "preencha os campos corretamente";
-        }
-    }
-    else {
-        echo "É necessário postar o formulário";
-    }
-    
-   
 
-    session_start();
+           
 
-    if(isset($_SESSION["ID_USUARIO"])){
-
-        header("location: navbar-logged");
-
-    }
+            
 
 
-
-/*
-$email = $_POST['email_validacao'];
-$senha = $_POST['senha_validacao'];
-
-
- $conn = mysql_connect ("localhost", "root" , "" );
- mysql_select_db("promessometro", $conn);
-
-    $sql = "SELECT EMAIL, NOME, ID_TIPO_USUARIO FROM usuario WHERE (EMAIL = '$email') AND (SENHA = '$senha' ) ";
-
-echo $sql;
-
-    $res = mysql_query($sql);
-    $resultado = mysql_fetch_row($res);
-    print_r($resultado);
-
-    if (empty($resultado)) {
-       
-        echo "Login inválido!"; exit;
-    } 
-
-    // Se a sessão não existir, inicia uma
-        if (!isset($_SESSION)) session_start();
-      
-        // Salva os dados encontrados na sessão
-        $_SESSION['ID_USUARIO'] = $resultado['ID_USUARIO'];
-        $_SESSION['NOME'] = $resultado['NOME'];
-        $_SESSION['ID_TIPO'] = $resultado['ID_TIPO_USUARIO'];
-      
-        // Redireciona o visitante
-        header("Location: navbar-logged"); exit;
-
-        // A sessão precisa ser iniciada em cada página diferente
-            if (!isset($_SESSION)) session_start();
-              
-            // Verifica se não há a variável da sessão que identifica o usuário
-            if (!isset($_SESSION['ID_USUARIO'])) {
-                // Destrói a sessão por segurança
-                session_destroy();
-                // Redireciona o visitante de volta pro login
-                header("Location: index.php"); exit;
-            }
-              
-            ?>
-              
-
-*/
-    
-
+          
 ?>

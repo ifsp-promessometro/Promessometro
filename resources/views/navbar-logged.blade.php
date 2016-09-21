@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+  
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -24,10 +25,15 @@
             </div>
             <div id="navbar1" class="navbar-collapse collapse navbar-right" style="margin-left:10px">
                 <ul class="nav navbar-nav ; col-sm-12">
-                    <li><A HREF="#" style="padding-left:2px;margin-top:10px">Ola, Alcino!</A></li>
+                    <li><p  style="padding-left:2px;margin-top:30px"><?php 
+                    session_start();
+
+                    echo "Ola, ".$_SESSION['NOME'];
+
+                    ?></p></li>
                     <li><img style="margin-top:10px" class="img-circle" src="img/alcino.png"></li>
-                    <li><button class="btn btn-primary btn-sm" style="margin-top:25px">Meus Dados</button></li>
-                    <li><button class="btn btn-default btn-sm" style="margin-top:25px">Log-Out</button></li>
+                    <li><button href =""class="btn btn-primary btn-sm" style="margin-top:25px">Meus Dados</button></li>
+                    <li><button class="btn btn-default btn-sm" style="margin-top:25px"><a href="logout.php">Logout</a></button></li>
                 </ul>
             </div>
         </div>

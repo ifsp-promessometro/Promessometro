@@ -1,9 +1,20 @@
+
+<?php
+   session_start();
+
+?>
+
+
 @extends ('navbar')
 
-<!DOCTYPE html>
+
+
 <html>
 <head>
     <title>Promessômetro Nacional</title>
+
+   
+
 </head>
 
 <body>

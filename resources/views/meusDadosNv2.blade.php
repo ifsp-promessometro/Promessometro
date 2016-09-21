@@ -1,3 +1,8 @@
+
+<?php 
+    @session_start();
+ ?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -39,13 +44,13 @@
                     <h3 class="subtitulo3 promeblue pointline margin-bot"><i class="glyphicon glyphicon-pencil formataglyp"></i> Metas</h3>
                         <div class="margin-p">
                             <h1 class="texto parag-inline">
-                                <label class="contador geralnotificacoes parag-inline">2</label>
+                                <label class="contador geralnotificacoes parag-inline"></label>
                             Que você ainda não finalizou
                             </h1>
                         </div>
                         <div class="margin-p largemargin-bot">
                             <h1 class="texto parag-inline">
-                                <label class="contador geralnotificacoes parag-inline">14</label>
+                                <label class="contador geralnotificacoes parag-inline"></label>
                             Comentários em suas metas
                             </h1>
                         </div>
@@ -73,22 +78,26 @@
                     <h3 class="subtitulo3 promeblue">Dados da conta</h3>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">E-mail:</label>
-                        <p class="parag-inline">email@email.com.br</p>
+                        <p class="parag-inline"><?php 
+                        echo $_SESSION['EMAIL'] ?></p>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Senha:</label>
-                        <p class="parag-inline">*************</p>
+                        <p class="parag-inline"><?php 
+                        echo $_SESSION['SENHA'] ?></p>
                         <a>Alterar</a>
                     </div>
 
                     <h3 class="subtitulo3 promeblue">Dados pessoais</h3>
                     <div class="margemleft-meusdados">
-                        <label class="subtitulo4 parag-inline">Nome e sobrenome:</label>
-                        <p class="parag-inline">Alcino Vilela</p>
+                        <label class="subtitulo4 parag-inline">Nome:</label>
+                        <p class="parag-inline"><?php 
+                        echo $_SESSION['NOME'] ?></p>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Cargo:</label>
-                        <p class="parag-inline">blabla</p>
+                        <p class="parag-inline"><?php 
+                        echo $_SESSION['CARGO'] ?></p>
                         <a>Alterar</a>
                     </div>
                     <div class="margemleft-meusdados">

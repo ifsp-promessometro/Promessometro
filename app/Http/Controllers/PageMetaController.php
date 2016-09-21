@@ -16,6 +16,9 @@ use App\Usuario;
 use App\Responsavel_Acao;
 use App\Prestacao_Acao;
 use DB;
+use App\Http\Controllers\Auth;
+
+
 
 class PageMetaController extends Controller
 {
@@ -39,4 +42,35 @@ class PageMetaController extends Controller
         // , 'usuario', 'responsavel', 'pca'
     }
 
+    public function SeguirMeta($meta = 'ID_META'){
+
+        session_start();
+
+         $conn = mysqli_connect ("localhost", "root" , "" ) or die (mysql_error());
+        mysqli_select_db($conn, "promessometro") or die (mysql_error());
+
+        $id_usuario = $_SESSION['ID_USUARIO'];
+        //$id_meta = ;
+
+        $sql = 'INSERT INTO usuario_segue_meta (`ID_USUARIO`, `ID_META`, `STATUS_USUARIO_SEGUE_META`) VALUES ('.$id_usuario.' , '.$meta.' , 1)';
+
+        //$stmt = mysqli_prepare ($conn,$sql);
+        if ($stmt = mysqli_prepare ($conn,$sql)) {
+
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+
+
+        header("Location: detalhemeta/{ID_META}");
+    }
+
+
+
+
+
+
+ 
+
+  
 }

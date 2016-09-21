@@ -1,4 +1,16 @@
+
+
 <!DOCTYPE html>
+<?php 
+ 
+if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
+
+    $_SESSION['LOG'] = 0;
+
+}
+
+?>
+
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -31,17 +43,40 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/promessometroDev/public/principal"></a>
+            <a class="navbar-brand" href="/Promessometro/public/principal"></a>
         </div>
+
+        
+        <?php if($_SESSION['LOG'] == 1) { ?>
+
+        <div id="navbar1" class="navbar-collapse collapse navbar-right">
+                <ul class="nav navbar-nav ; col-sm-12">
+                    <li><p  style="padding-left:2px;margin-top:30px">
+                    <?php 
+                    
+
+                    echo "Ola, ".$_SESSION['NOME'];
+
+                    ?>
+                    </p></li>
+
+                    <li><img style="margin-top:10px; margin-left:10px" class="img-circle" src="img/alcino.png"></li>
+                    <li><a href="verificaDados.php"><button class="btn btn-primary btn-sm" style="margin-top:10px">Meus Dados</button></a></li>
+                    <li><A HREF="logout.php"><button class="btn btn-default btn-sm" style="margin-top:10px">Logout</button></A></li>
+                </ul>
+        </div>
+
+        <?php } else { ?>
+
         <div id="navbar1" class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <section>
-                <form action="principal/logar" method="post">
+                <form action="validacao.php" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                     <div class="formlogin">
                         <li>
                             <label for="email">Email
-                                <input type="text" name="email_validacao"></input>
+                                <input type="email" name="email_validacao"></input>
                             </label>
                         </li>
                     </div>
@@ -55,13 +90,20 @@
                     <div class="formlogin">
                         <li>
                             <button  type="submit" class="btn btn-primary btn-sm navbar-btn-fontsize">Login</button>
-                            <a href="cadastro"><button class="btn btn-default btn-sm navbar-btn-fontsize">Cadastre-se</button></a>
+                            <a href="cadastro"><button class="btn btn-default btn-sm navbar-btn-fontsize">Cadastre-se</button></a>  
                         </li>
                     </div>
                 </form>
+                
+                    
+                
+
                 </section>
             </ul>
         </div>
+
+    <?php } ?>
+
     </div>
     <div class="second-div">
         <a href="QuemSomos"> Quem Somos</a><a>|</a>

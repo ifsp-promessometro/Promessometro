@@ -89,7 +89,12 @@ Route::get('/indicadorDetail', function () {
 
 Route::get('/detalheindicador/{ID_INDICADOR}', 'PageIndicadorController@retorna_detalhada');
 
-Route::get('/detalhemeta/{ID_META}', 'PageMetaController@retorna_detalhada');
+Route::get('/detalhemeta/{ID_META}','PageMetaController@retorna_detalhada');
+Route::post('/detalhemeta/{ID_META}/SeguirMeta', 'PageMetaController@SeguirMeta');
+
+
+
+
 
 Route::get('/temaSelection/{ID_CIDADE}', 'PageTemaSelecao@retorna_informacao');
 

@@ -1,9 +1,20 @@
-@extends ('navbar')
+<?php
+   session_start();
 
+
+
+?>
+@extends ('navbar')
 <!DOCTYPE html>
 <html>
 <head>
     <title>Promessômetro</title>
+
+
+
+ 
+
+
 </head>
 
 <body>       
@@ -37,23 +48,42 @@
                     <h3 class="subtitulo3 promeblue">Dados da conta</h3>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">E-mail:</label>
-                        <p class="parag-inline">email@email.com.br</p>
+                        <p class="parag-inline"><?php
+                         echo $_SESSION['EMAIL']
+                         ?></p>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Senha:</label>
-                        <p class="parag-inline">*************</p>
-                        <a>Alterar</a>
+                        <form name="form_senha" method="post" action="alteraSenha-User.php">
+                            <input type="password" value="<?php 
+                        echo $_SESSION['SENHA']; ?>" name="senha_user">
+
+                        <INPUT type="submit" value="Alterar">    
+                        </form>
+                        
                     </div>
 
                     <h3 class="subtitulo3 promeblue">Dados pessoais</h3>
                     <div class="margemleft-meusdados">
-                        <label class="subtitulo4 parag-inline">Nome e sobrenome:</label>
-                        <p class="parag-inline">Alcino Vilela</p>
+                        <label class="subtitulo4 parag-inline">Nome:</label>
+                        <p class="parag-inline"><?php 
+                            echo $_SESSION['NOME'];
+                         ?></p>
                     </div>
                     <div class="margemleft-meusdados">
-                        <label class="subtitulo4 parag-inline">Cargo:</label>
-                        <p class="parag-inline">blabla</p>
-                        <a>Alterar</a>
+                        
+                        
+                        <form name="form_cargo" method="post" action="alteraCargo-User.php">
+                            <label class="subtitulo4 parag-inline">Cargo:</label>
+                            <input type="text" value="<?php 
+                            echo $_SESSION['CARGO']; ?>" name="cargo_user" readonly>
+                            <br>
+                            <br>
+                            <label class="subtitulo4 parag-inline">Novo Cargo:</label>
+                            <input type="text" name="cargo_user_new">   
+
+                        <INPUT type="submit" value="Alterar">    
+                        </form>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Desativar conta:</label>
@@ -90,7 +120,7 @@
                             <div class="col-md-8">
                                 <input type = "hidden" name="ID_META" value="{{ $aux->ID_META }}">
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_TEMA }}</div>
-                                <div class="col-md-3 meusdados-texto">{{ $aux->OBJETIVO }}</div>
+                                <div class="col-md-3 meusdados-texto">{{ $aux->DESCRICAO }}</div>
                                 <div class="col-md-1 meusdados-texto">100,0</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_GESTAO }}</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->DATA_INICIO }}</div>

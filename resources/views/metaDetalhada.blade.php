@@ -1,3 +1,12 @@
+
+
+<?php
+
+  session_start();
+
+  ?>
+
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -54,7 +63,12 @@
           <div class="col-md-10">
             <div id="testcircle"></div>
           </div>
-            <button class="pull-left btn btn-info btn-lg">Seguir Meta</button>
+        
+            <form action="1/SeguirMeta" method="post" name="form_follow">
+              <button TYPE="submit" class="pull-left btn btn-info btn-lg">Seguir Meta</button>
+               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>
+            
         </div>
         <div class="col-md-6">
           <div class="selecao-tema">
