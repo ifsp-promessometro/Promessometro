@@ -12,7 +12,7 @@
         <h1>PRESTACAO DE CONTAS DE INDICADORES</h1>
             <input type="submit" value="Cadastrar" class="btn-primary btn-pad" onclick="location.href= 'prestacaoindicador/cadastrar'">
             <input type="submit" value="Atualizar" class="btn-primary btn-pad" onclick="location.href= 'prestacaoindicador/consultar'">
-            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/principal'">
+            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/'">
             </div>
             </div>
         </section>

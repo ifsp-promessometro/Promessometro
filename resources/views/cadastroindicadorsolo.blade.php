@@ -1,3 +1,7 @@
+<?php
+   session_start();
+?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -27,9 +31,8 @@
                             <input type="text" name="DESCRICAO" class="inputtext input"></input>
                             <label class="promeblue subtitulo3">Protocolo:</label>
                             <input type="number" name="PROTOCOLO" class="imputnormal input"></input>
-                            <label class="promeblue subtitulo3">Fonte:</label>
-                            <div>
-                                <input type="text" name="FONTE" class="imputnormal input"></input>
+                            <br>
+                            <div class="col-md-6 p-m-null">
                                 <label class="promeblue subtitulo3">UND.Medida</label>
                                 <select name="UND_MEDIDA">
                                             <option>R$</option>
@@ -45,10 +48,26 @@
                                 </select>
                             </div>
                             <div class="col-md-6 p-m-null">
+                                <label class="promeblue subtitulo3">Valor Meta:</label>
+                                <input type="number" step="any" name="VALOR_META" class="imputnormal input"></input>
+                            </div>
+                            <div class="col-md-12 p-m-null">
+                                <label class="promeblue subtitulo3">Fonte:</label>
+                                <input type="text" name="FONTE" class="imputnormal input"></input>
+                            </div>
+                            <div class="col-md-6 p-m-null">
                                 <label class="promeblue subtitulo3">Tema:</label>
                                 <select name="ID_TEMA" class="inputlist input">
                                 @foreach ($tema as $auxtema)
                                     <option value="{{ $auxtema->ID_TEMA }}">{{ $auxtema->NOME }}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 p-m-null">
+                                <label class="promeblue subtitulo3">Cidade:</label>
+                                <select name="ID_CIDADE" class="inputlist input">
+                                @foreach ($cidade as $auxcidade)
+                                    <option value="{{ $auxcidade->ID_CIDADE }}">{{ $auxcidade->NOME }}</option>
                                 @endforeach
                                 </select>
                             </div>

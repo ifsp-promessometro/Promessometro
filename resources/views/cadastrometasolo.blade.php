@@ -1,3 +1,7 @@
+<?php
+   session_start();
+?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -39,11 +43,21 @@
                                         <option value="{{ $auxgestao->ID_GESTAO }}">{{ $auxgestao->PROMESSA_CAMPANHA }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="col-md-6 p-m-null">
                                 <label class="promeblue subtitulo3">Tema:</label>
                                 <select name="ID_TEMA" class="inputlist input">
                                     @foreach ($tema as $auxtema)
                                         <option value="{{ $auxtema->ID_TEMA }}">{{ $auxtema->NOME }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6 p-m-null">
+                                <label class="promeblue subtitulo3">Cidade:</label>
+                                <select name="ID_CIDADE" class="inputlist input">
+                                @foreach ($cidade as $auxcidade)
+                                    <option value="{{ $auxcidade->ID_CIDADE }}">{{ $auxcidade->NOME }}</option>
+                                @endforeach
                                 </select>
                             </div>
                                 <div class="col-md-12 p-m-null">

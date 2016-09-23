@@ -22,7 +22,7 @@
                             <input type="text" name="CONSIDERACAO"></input><br><br>
                             <input type="submit" value="Cadastrar" class="btn-primary btn-pad"></input><br><br>
                             </form>
-                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/prestaacao'"> 
+                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/prestaacao'"> 
                 </div>
             </div>
         </section>

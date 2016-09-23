@@ -1,5 +1,5 @@
-<?php 
-    $conn = mysql_connect ("mysql.promessometro.kinghost.net", "promessometro" , "alcino5096" ) or die (mysql_error());
+﻿<?php 
+    $conn = mysql_connect ("localhost", "root" , "" ) or die (mysql_error());
     mysql_select_db("promessometro", $conn) or die (mysql_error());
 ?>  
 <html>
@@ -58,7 +58,7 @@
                 $_SESSION['LOG'] = 1;
 
 
-                header("Location: principal");
+               
 
 
             }
@@ -66,6 +66,8 @@
                 echo "Email ou Senha Inválidos! Aguarde enquanto você é redirecionado!";
                 echo "<script>LoginFailed()</script>";
             }
+
+             header("Location: principal");
 
            
 

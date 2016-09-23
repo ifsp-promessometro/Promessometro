@@ -11,6 +11,7 @@ use App\Meta;
 use App\Pop_Beneficiada;
 use App\Tema;
 use App\GestaoSolo;
+use App\Cidade;
 
 class MetaSoloController extends Controller
 {
@@ -19,8 +20,9 @@ class MetaSoloController extends Controller
 		$pop_beneficiada = Pop_Beneficiada::all();
 		$gestao = GestaoSolo::all();
 		$tema = Tema::all();
+		$cidade = Cidade::all();
 
-		return view('cadastrometasolo', compact('pop_beneficiada', 'gestao', 'tema'));
+		return view('cadastrometasolo', compact('pop_beneficiada', 'gestao', 'tema', 'cidade'));
 	}
 
 	function cadastrar(Request $request){
@@ -31,6 +33,7 @@ class MetaSoloController extends Controller
 		$meta -> DATA_FIM = $request -> input ('DATA_FIM');
 		$meta -> ID_GESTAO = $request -> input ('ID_GESTAO');
 		$meta -> ID_TEMA = $request -> input ('ID_TEMA');
+		$meta -> ID_CIDADE = $request -> input ('ID_CIDADE');
 		$meta -> STATUS_META = 1;
 		$meta -> save();
 

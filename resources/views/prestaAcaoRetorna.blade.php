@@ -23,7 +23,7 @@
                         @endforeach
                         <br><br>
                         </form>
-                        <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/prestaacao'">   
+                        <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/prestaacao'">   
                     </div>
             </div>
         </section>

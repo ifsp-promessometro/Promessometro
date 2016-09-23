@@ -1,8 +1,13 @@
+<?php
+   session_start();
+?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Meta Page</title>
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -11,22 +16,22 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script>
-    $( document ).ready(function() {
-      $("#test-circle").circliful({
-        animation: 1,
-        animationStep: 3,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        percent: 42,
-      });
-    });
-  </script>
+        $( document ).ready(function() {
+          $("#testcircle").circliful({
+            animation: 1,
+            animationStep: 3,
+            foregroundBorderWidth: 15,
+            backgroundBorderWidth: 15,
+            percent: 50,
+          });
+        });
+      </script>
 </head>
 <body>
   <section>
     <div class="middlecenter-cadastra">
       <h1 class="titulo promeblue">TEMA | {{ $tema->NOME}}</h1>
-      <div class="subtitulo2 promeblue-claro">Cidade atual: Campinas
+      <div class="subtitulo2 promeblue-claro">Cidade atual: {{ $cidade->NOME}}
       </div>
       <div class="container">
         <div class="col-md-12">
@@ -35,13 +40,8 @@
               <div class="col-md-7">
                 <div class="subtitulo promeblue-claro">Metas
                 </div>
-                <div id="test-circle"></div>
-              </div>
-              <div class="col-md-5 subtitulo3 promeblue-claro">
-                <font>42 de 100 metas concluidas</font>
               </div>
             </div>
-            <button class=" btn btn-primary btn-sm subtitulo2" style="color: white; display:block; clear: both">Ver Meta</button>
           </div>
           <div class="col-md-6 p-fifty">
             <div class="col-md-12 margin-tmi" style="height: 350px;">
@@ -52,11 +52,7 @@
                   <div class="p-m-null" id="myfirstchart" style="height: 250px; width: 300px;"></div>
                 </div>
               </div>
-              <div class="col-md-5 subtitulo3 promeblue-claro">
-                <font>42 de 100 indicadores satisfeitos</font>
-              </div>
             </div>
-            <button class=" btn btn-primary btn-sm subtitulo2" style="color: white; display:block; clear: both">Ver Indicador</button>
           </div>
         </div>
       </div>
@@ -67,10 +63,11 @@
             <div class="accordions">
               <div class="accordion-item">
                 <input type="checkbox" name="accordion" id="accordion-1" />
-                <label for= "accordion-1"><font class="subtitulo2 promeblue">Clique aqui para ver mais metas</font></label>
+                <label for= "accordion-1"><font class="btn btn-primary btn-sm subtitulo3" style="color: white; display:block; clear: both">Ver Metas</font></label>
                 <div class="accordion-content">
                   <div class="row col-md-6">
                   @foreach ($meta as $auxmeta)
+                  <hr class="gradient-line">
                           {{--*/$percentual_meta_total = 0/*--}}
                           {{--*/ $total = 0/*--}}
                           {{--*/ $contaux=0/*--}}
@@ -101,23 +98,24 @@
                     {{--*/$percentual_meta_total = $total / $contaux/*--}}
 
                     <div class="col-md-2" >
-                      @if($percentual_meta_total > 0 && $percentual_meta_total < 100)
-                      <img src="../img/Lupa-PDP.png"> 
-                      @elseif ($percentual_meta_total > 99)
-                      <img src="../img/Lupa-EDP.png"> 
-                      @elseif ($percentual_meta_total < 1)
-                      <img src="../img/Lupa-AFP.png"> 
-                      @endif
+                      @if($percentual_meta_total <1)
+                        <img src="../img/vermelha.png">
+                      @elseif($percentual_meta_total >= 1 && $percentual_meta_total < 100)
+                        <img src="../img/amarela.png">
+                      @else
+                        <img src="../img/verde.png">
+                      @endif 
                     </div>
                     <div class="col-md-3" >
                       <P class="subtitulo3 promeblue-claro">{{ number_format(($percentual_meta_total), 0) }} %</P>
                     </div>
                     <div class="col-md-7" >
+                      <a onclick="javascript:location.href='/Promessometro/public/detalhemeta/{{$auxmeta->ID_META}}'">
                       <P class="subtitulo3 promeblue-claro">{{ $auxmeta->DESCRICAO }}</P>
+                      </a>
                     </div>
                   @endforeach
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -126,19 +124,29 @@
             <div class="accordions">
               <div class="accordion-item">
                 <input type="checkbox" name="accordion" id="accordion-2" />
-                <label for= "accordion-2"><font class="subtitulo2 promeblue">Clique aqui para ver mais indicadores</font></label>
+                <label for= "accordion-2"><font class="btn btn-primary btn-sm subtitulo3" style="color: white; display:block; clear: both">Ver Indicadores</font></label>
                 <div class="accordion-content">
                   <div class="col-md-6" >
+                  @foreach ($indicador as $auxindicador)
                     <hr class="gradient-line">
                     <div class="col-md-2" >
-                      <img src="img/lupa-red.png">
+                      @if($percentual_meta_total <1)
+                        <img src="../img/vermelha.png">
+                      @elseif($percentual_meta_total >= 1 && $percentual_meta_total < 100)
+                        <img src="../img/amarela.png">
+                      @else
+                        <img src="../img/verde.png">
+                      @endif 
                     </div>
-                    <div class="col-md-2" >
-                      <P class="texto promeblue-claro">10%</P>
+                    <div class="col-md-3" >
+                      <P class="subtitulo3 promeblue-claro">{{ number_format(($percentual_meta_total), 0) }} %</P>
                     </div>
-                    <div class="col-md-8" >
-                      <P class="texto promeblue-claro">Habitantes Atendidos Por Mes.</P>
+                    <div class="col-md-7" >
+                      <a onclick="javascript:location.href='/Promessometro/public/detalheindicador/{{$auxindicador->ID_INDICADOR}}'">
+                      <P class="subtitulo3 promeblue-claro">{{ $auxindicador->DESCRICAO }}</P>
+                      </a>
                     </div>
+                    @endforeach
                     <hr>
                   </div>
                 </div>

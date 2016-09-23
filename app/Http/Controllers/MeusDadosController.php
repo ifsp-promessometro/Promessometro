@@ -15,12 +15,24 @@ use DB;
 class MeusDadosController extends Controller
 {
 	function consultarnv1(){
-		$meta = Meta::all();
+
+		session_start();
+		$meta = DB::table('meta')->join('usuario_segue_meta','usuario_segue_meta.ID_META', '=', 'meta.ID_META')
+		->where('usuario_segue_meta.ID_USUARIO' , $_SESSION['ID_USUARIO'])
+		->get();
 		return view('meusDadosNv1', ['meta'=>$meta]);
+
+
 	}
 
+	
+
 	function consultarnv2(){
-		$meta = Meta::all();
+
+		session_start();
+		$meta = DB::table('meta')->join('usuario_segue_meta','usuario_segue_meta.ID_META', '=', 'meta.ID_META')
+		->where('usuario_segue_meta.ID_USUARIO' , $_SESSION['ID_USUARIO'])
+		->get();
 		return view ('meusDadosNv2', ['meta'=>$meta]);
 	}
 

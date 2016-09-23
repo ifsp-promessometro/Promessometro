@@ -22,7 +22,7 @@
                             <input type="text" name="PERCENTUAL_PROJETO"></input><br><br>
                             <input type="submit" value="Cadastrar" class="btn-primary btn-pad"></input><br><br>
                             </form>
-                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/prestacaoprojeto'"> 
+                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/prestacaoprojeto'"> 
                 </div>
             </div>
         </section>

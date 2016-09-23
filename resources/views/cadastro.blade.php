@@ -153,11 +153,10 @@
                             <div class="col-md-6 p-fifty">    
                                 <label class="promeblue subtitulo3">Número de Habitantes:</label>
                                 <input type="text" name="num_habitantes" class="inputnormal input"></input>
-                                
-                                <button  class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm1()">Voltar</button>  
-                                <button id="next2" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm3()">Próximo</button>
                             </div>
                         </div>
+                        <button  class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm1()">Voltar</button>  
+                        <button id="next2" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm3()">Próximo</button>
                 </div>
                 <div id="step-3" style="display:none;">
                     <h1 class="titulo promeblue">Cadastro de Gestão</h1>
@@ -171,7 +170,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label class="promeblue subtitulo3">Partido:</label>
-                                       <select class="smallinput inputlist" name="partido_prefeito">
+                                        <select class="partidoinput inputlist" name="partido_prefeito">
                                         @foreach($partido as $aux)
                                             <option value="{{ $aux->ID_PARTIDO }}">{{ $aux->NOME }}</option>
                                         @endforeach
@@ -184,8 +183,6 @@
                                 <label class="promeblue subtitulo3">Nome do Vice Prefeito:</label>
                                 <input type="text" name="nome_vice" class="smallinput input"></input>
                                 
-                                <label class="promeblue subtitulo3">Coligação:</label>
-                                <input type="text" name="coligacao" class="inputnormal input"></input>
                                 <div class="col-md-12 p-m-null">
                                     <div class="col-md-8 p-m-null">
                                         <label class="promeblue subtitulo3">Nome do Vereador:</label>
@@ -196,7 +193,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label class="promeblue subtitulo3">Partido:</label>
-                                       <select class="smallinput inputlist" name="partido_vereador">
+                                        <select class="partidoinput inputlist" name="partido_vereador">
                                         @foreach($partido as $aux)
                                             <option value="{{ $aux->ID_PARTIDO }}">{{ $aux->NOME }}</option>
                                         @endforeach
@@ -290,7 +287,7 @@
                             </div>
                         </div>
                         <button id="next1" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm3()">Voltar</button> 
-                         <button id="next1" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm5()">Próximo</button>
+                        <button id="next1" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm5()">Próximo</button>
                 </div>
                 <div id="step-5" style="display:none;">
                     <h1 class="titulo promeblue">Cadastro de Indicadores</h1>
@@ -298,13 +295,6 @@
                         <div class="col-md-6 rightline">    
                             <label class="promeblue subtitulo3">Nome:</label>
                             <input type="text" name="nome_indicador"  class=" input inputlist">
-                            
-                            <label class="promeblue subtitulo3">Gestão</label>
-                            <select class="smallinput inputlist" name="id_gestao">
-                                @foreach($gestao as $aux)
-                                            <option value="{{ $aux->ID_GESTAO }}">{{ $aux->ID_GESTAO }}</option>
-                                @endforeach
-                            </select>
 
                             <label class="promeblue subtitulo3">Descricão</label>
                             <textarea type="text" class="inputtext input" name="descricao_indicador"></textarea>
@@ -319,6 +309,8 @@
                             <label class="promeblue subtitulo3">Fonte:</label>
                             <input type="text" name="fonte_indicador" list="exampleList" class="inputlist input">
                             
+                            <label class="promeblue subtitulo3">Valor Meta:</label>
+                            <input type="text" placeholder="0,00" name="valor_meta" class="inputnormal input"></input>
                             <div>
                                 <div class="col-md-6 p-m-null">
                                     <label class="promeblue subtitulo3">UND.Medida</label>
@@ -343,13 +335,13 @@
                             </div>
                         </div>
                     </div>
-                    <button id="next1" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm4()">Voltar</button> 
+                    <button id="next1" class="pull-left btn-primary btn-pad" type="button" onclick="exibirForm4()">Voltar</button>
+                    <input type="submit" value="Cadastrar" class="btn-primary btn-pad"> 
                 </div>
             </div>
             <!--<input type="submit" value="Cadastrar" class="btn-primary btn-pad"></input>
             <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/meta'">-->
         </div>
-    <input type="submit" value="Cadastrar" class="btn-primary btn-pad">
     </form>
     </section>
 

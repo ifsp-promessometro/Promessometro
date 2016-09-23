@@ -27,6 +27,7 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
         
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="../js/jquery.circliful.min.js"></script>
+		<script src="../js/canvasjs.min.js"></script>
 
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -43,7 +44,7 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/Promessometro/public/principal"></a>
+            <a class="navbar-brand" href="/Promessometro/public/"></a>
         </div>
 
         
@@ -51,7 +52,7 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
 
         <div id="navbar1" class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav ; col-sm-12">
-                    <li><p  style="padding-left:2px;margin-top:30px">
+                    <li><p class="navbar-btn-fontsize" style="padding-left:2px;margin-top:30px">
                     <?php 
                     
 
@@ -59,10 +60,8 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
 
                     ?>
                     </p></li>
-
-                    <li><img style="margin-top:10px; margin-left:10px" class="img-circle" src="img/alcino.png"></li>
-                    <li><a href="verificaDados.php"><button class="btn btn-primary btn-sm" style="margin-top:10px">Meus Dados</button></a></li>
-                    <li><A HREF="logout.php"><button class="btn btn-default btn-sm" style="margin-top:10px">Logout</button></A></li>
+                    <li><a href="<?php echo url('verificaDados.php') ?>"><button class="btn btn-primary btn-sm navbar-btn-fontsize" style="margin-top:10px">Meus Dados</button></a></li>
+                    <li><A href="<?php echo url('logout.php') ?>"><button class="btn btn-default btn-sm navbar-btn-fontsize" style="margin-top:10px">Logout</button></A></li>
                 </ul>
         </div>
 
@@ -71,7 +70,7 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
         <div id="navbar1" class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 <section>
-                <form action="validacao.php" method="post">
+                <form action="<?php echo url('validacao.php') ?>" method="post">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
                     <div class="formlogin">
                         <li>
@@ -89,12 +88,11 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
                     </div>
                     <div class="formlogin">
                         <li>
-                            <button  type="submit" class="btn btn-primary btn-sm navbar-btn-fontsize">Login</button>
-                            <a href="cadastro"><button class="btn btn-default btn-sm navbar-btn-fontsize">Cadastre-se</button></a>  
+                            <button  type="submit" class="btn btn-primary btn-sm navbar-btn-fontsize">Login</button> 
                         </li>
                     </div>
                 </form>
-                
+				<a href="cadastro"><button class="btn btn-default btn-sm navbar-btn-fontsize">Cadastre-se</button></a>
                     
                 
 
@@ -106,10 +104,10 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
 
     </div>
     <div class="second-div">
-        <a href="QuemSomos"> Quem Somos</a><a>|</a>
-        <a href="ToDeOlho"> Blog Tô de Olho</a><a>|</a>
-        <a href="parceiros"> Parceiros</a><a>|</a>
-        <a href="contato"> Contato</a>
+        <a href="<?php echo url('QuemSomos') ?>"> Quem Somos</a><a>|</a>
+        <a href="<?php echo url('ToDeOlho') ?>"> Blog To de Olho</a><a>|</a>
+        <a href="<?php echo url('parceiros') ?>"> Parceiros</a><a>|</a>
+        <a href="<?php echo url('contato') ?>"> Contato</a>
     </div>
 </nav>
 <footer>
@@ -117,19 +115,19 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <li><a href="principal"><b><i>Home</b></i></a></li>
-                    <li><a href="QuemSomos">objetivo</a></li>
-                    <li><a href="ToDeOlho">de olho no promessômetro</a></li>
-                    <li><a href="parceiros">Parceiros</a></li>
+                    <li><a href="<?php echo url('index') ?>"><b><i>Home</b></i></a></li>
+                    <li><a href="<?php echo url('QuemSomos') ?>">Objetivo</a></li>
+                    <li><a href="<?php echo url('ToDeOlho') ?>">De olho no promessometro</a></li>
+                    <li><a href="<?php echo url('parceiros') ?>">Parceiros</a></li>
                 </div>
                 <div class="col-md-4">
-                    <li><a href="#"><b><i>Auditor Cidadão</i></b></a></li>
-                    <li><a href="#">placar da câmara de vereadores</a></li>
+                    <li><a href="#"><b><i>Auditor Cidadao</i></b></a></li>
+                    <li><a href="#">placar da camara de vereadores</a></li>
                     <li><a href="#">programa de metas - 2013 2016</a></li>
                 </div>
                 <div class="col-md-4">
                     <ul>
-                        <li><a href="contato"><b><i>Fale Conosco</i></b></a></li>
+                        <li><a href="<?php echo url('contato') ?>"><b><i>Fale Conosco</i></b></a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> vilela@promessometro.org</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-comment"></span> +55 19 9 8161 9281</a></li>
                         <li>
@@ -140,7 +138,7 @@ if(!isset($_SESSION['EMAIL']) || !isset($_SESSION['SENHA'])){
                 </div>
             </div>
             <br><br><br>
-            <p class="pull-left direitosautorais"><b>Promessômetro © 2016 | auditoria cidadã</b> e avaliação de sustentabilidade da gestão municipal</p>
+            <p class="pull-left direitosautorais"><b>Promessometro 2016 | auditoria cidada</b> e avaliacao de sustentabilidade da gestao municipal</p>
         </div>
     </div>
 </footer>

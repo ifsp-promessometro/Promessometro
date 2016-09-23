@@ -19,7 +19,7 @@ use DB;
 
 class PageIndicadorController extends Controller
 {
-	public function create()
+    public function create()
     {
         $inputs = Input::all();
         $page = Page::create();

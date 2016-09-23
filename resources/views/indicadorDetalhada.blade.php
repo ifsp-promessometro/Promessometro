@@ -1,17 +1,46 @@
+<?php
+  session_start();
+ ?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
 <html>
 <head>
   <title>Indicador Detalhada</title>
+  <fieldset id="list-of-dates">
+  {{--*/ $contador = 0 /*--}}
+    @foreach ($pci as $prestconta)
+      @if ($prestconta->ID_INDICADOR == $page->ID_INDICADOR)
+      <input id="myNumber{{ $contador }}" type="hidden" value = "{{ date('Y', strtotime($prestconta->DATA_REFERENCIA)) }}"/>
+      <input id="myValue{{ $contador }}" type="hidden" value = "{{ $prestconta->VALOR }}"/>
+      {{--*/ $contador = $contador + 1 /*--}}
+      @endif
+    @endforeach
+    {{--*/ $porcentagemindicador = 0 /*--}}
+  </fieldset>
+
   <script>
-        window.onload = function () {
+        window.onload = function (datas) {
+          var contador = {{ $contador }};
+          var valor = [];
+          for (i = 0; i<contador; i++){
+            datas[i] = document.getElementById("myNumber"+i).value;
+            
+
+              if(typeof document.getElementById("myValue"+i).value === 'undefined'){
+                valor.push(null);
+              }else{
+                valor.push(parseInt(document.getElementById("myValue"+i).value));
+              }
+          }
+
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 axisX: 
                 {gridColor: "Silver",
                   tickColor: "silver",
-                  valueFormatString: "DD/MMM"},
+                  valueFormatString: "YYYY"},
                 toolTip: 
                 {shared: true},
                 axisY: 
@@ -28,9 +57,10 @@
                   markerType: "square",
                   color: "rgba(0, 102, 204, 0.8)",
                   dataPoints: [
-                  { x: new Date(2010, 0, 15), y: 200 },
-                  { x: new Date(2010, 0, 23), y: 750 },
-                  { x: new Date(2010, 4, 5), y: 900 }
+                  { x: new Date(datas[0], 0, 1), y: valor[0] },
+                  { x: new Date(datas[1], 0, 1), y: valor[1] },
+                  { x: new Date(datas[2], 0, 1), y: valor[2] },
+                  { x: new Date(datas[3], 0, 1), y: valor[3] }
                   ]},
                 {type: "line",
                   showInLegend: true,
@@ -38,9 +68,10 @@
                   color: "#d62929",
                   lineThickness: 2,
                   dataPoints: [
-                  { x: new Date(2010, 0, 1), y: 10 },
-                  { x: new Date(2010, 0, 5), y: 50 },
-                  { x: new Date(2010, 0, 23), y: 660 }
+                  { x: new Date(datas[0], 0, 1), y: {{$page->VALOR_META}} },
+                  { x: new Date(datas[1], 0, 1), y: {{$page->VALOR_META}} },
+                  { x: new Date(datas[2], 0, 1), y: {{$page->VALOR_META}} },
+                  { x: new Date(datas[3], 0, 1), y: {{$page->VALOR_META}} }
                   ]}],
                 legend: 
                 {cursor: "pointer",
@@ -58,18 +89,17 @@
 </head>
 <body>        
   <section>
+  
     <div class="middlecenter-cadastra">
       <div class="row">
         <div class="col-md-6">
-          <h1 class="subtitulo promeblue"><img src="../img/lupa-yellow.png"> INDICADOR | {{ $page->NOME }}</h1>
+          <h1 class="subtitulo promeblue">INDICADOR | {{ $page->NOME }}</h1>
           <h3 class="subtitulo2 promeblue-claro">{{ $tema -> NOME }}</h3>
           <div class="container">
           <div class="row container">
             <div class="row" id="chartContainer" style="margin: 2%; display: inline-block; width:40em; height: 30em;"></div>
           </div>
           </div>
-          <div class="centralizafonte subtitulo3"> A Prefeitura de Campinas NÃO ATENDE a meta deste indicador. </div>
-          <div class="centralizafonte subtitulo3"><img style="width: 40px; height: 40px;"src="../img/lupa-yellow.png"> NÃO ATENDE</div>
           <div class="col-md-12">
             <hr class="gradient-line">
           </div>
@@ -127,7 +157,7 @@
             </div >
           </div>
         </div>
-        <div class="row">
+        <div class="col-md-12">
           <div class="col-md-12">
             <h1 class="subtitulo subtitulo-barra promeblue">De olho no Promessometro</h1>
             <p class="texto">Registre aqui seu comentário, critica e sugestao para melhorar a gestao municipal</p>

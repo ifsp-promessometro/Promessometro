@@ -11,6 +11,7 @@ use App\PageIndicador;
 use App\GestaoSolo;
 use App\Tema;
 use App\Meta;
+use App\Cidade;
 
 class IndicadorSoloController extends Controller
 {
@@ -18,8 +19,9 @@ class IndicadorSoloController extends Controller
 	function consultar(){
 		$gestao = GestaoSolo::all();
 		$tema = Tema::all();
+		$cidade = Cidade::all();
 		
-		return view('cadastroindicadorsolo', compact('gestao', 'tema'));
+		return view('cadastroindicadorsolo', compact('gestao', 'tema', 'cidade'));
 	}
 
 	function cadastrar(Request $request){
@@ -30,7 +32,9 @@ class IndicadorSoloController extends Controller
 		$indicador -> PROTOCOLO = $request -> input ('PROTOCOLO');
 		$indicador -> FONTE = $request -> input ('FONTE');
 		$indicador -> UND_MEDIDA = $request -> input ('UND_MEDIDA');
+		$indicador -> VALOR_META = $request -> input ('VALOR_META');
 		$indicador -> ID_TEMA = $request -> input ('ID_TEMA');
+		$indicador -> ID_CIDADE = $request -> input ('ID_CIDADE');
 		$indicador -> save();
 
 		$meta = Meta::all();

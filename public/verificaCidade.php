@@ -3,7 +3,7 @@
 	$estado = $_POST['estado'];
 	#echo "Funcionou";
 
- 	$conn = mysql_connect ("mysql.promessometro.kinghost.net", "promessometro" , "alcino5096" ) or die (mysql_error());
+ 	$conn = mysql_connect ("localhost", "root" , "" ) or die (mysql_error());
     mysql_select_db("promessometro", $conn) or die (mysql_error());
 
  	$query   = "SELECT C.ID_CIDADE, C.NOME FROM cidade AS C INNER JOIN estado AS UF ON UF.ID_ESTADO = C.ID_ESTADO WHERE UF.SIGLA = '$estado'";

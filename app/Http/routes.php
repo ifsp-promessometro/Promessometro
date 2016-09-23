@@ -16,16 +16,12 @@ Route::get('/chart', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/tema', function () {
     return view('temaPrincipal');
 });
-
-// Route::get('/metaprincipales', function () {
-//     return view('metaPrincipal');
-// });
 
 Route::get('/metaDetail', function () {
     return view('metaDetalhada');
@@ -43,24 +39,12 @@ Route::get('/tema/cadastrar', function (){
 	return view('temaCadastra');
 });
 
-Route::get('/metaindicador', function () {
-    return view('metaIndicadorPrincipal');
-});
-
 Route::get('/prestaacao', function () {
     return view('prestaAcaoPrincipal');
 });
 
 Route::get('/responsavelindicador', function () {
     return view('responsavelIndicadorPrincipal');
-});
-
-Route::get('/prestacaoindicador', function () {
-    return view('prestacaoIndicadorPrincipal');
-});
-
-Route::get('/prestacaoprojeto', function () {
-    return view('prestacaoProjetoPrincipal');
 });
 
 Route::get('/usuariometa', function () {
@@ -71,7 +55,9 @@ Route::post('/tema/cadastrar', 'TemaController@cadastrar');
 Route::get('/tema/consultar', 'TemaController@consultar');
 Route::post('/tema/consultar', 'TemaController@atualizar');
 
-
+Route::get('/dogexplode', function(){
+    return view('cadastro7');
+});
 
 Route::post('/meta/atualizar', 'MetaController@atualiza_especifica');
 Route::get('/meta/atualizar', 'MetaController@atualiza_especifica');
@@ -81,27 +67,19 @@ Route::post('/meta/cadastrar', 'MetaController@cadastrar');
 Route::get('/meta', 'MetaController@consultar');
 Route::post('/meta/consultar', 'MetaController@atualizar');
 
-// Route::get('usuarioDetalhar/{nome}',['as' => 'UsuarioDetalhar', 'uses' => 'controllerUsuarios@detalhar']);
-
 Route::get('/indicadorDetail', function () {
     return view('indicadorDetalhada');
 });
 
 Route::get('/detalheindicador/{ID_INDICADOR}', 'PageIndicadorController@retorna_detalhada');
 
-Route::get('/detalhemeta/{ID_META}','PageMetaController@retorna_detalhada');
+Route::get('/detalhemeta/{ID_META}', 'PageMetaController@retorna_detalhada');
 Route::post('/detalhemeta/{ID_META}/SeguirMeta', 'PageMetaController@SeguirMeta');
-
-
-
-
+Route::post('/detalhemeta/{ID_META}/DeixaSeguir', 'PageMetaController@DeixaSeguir');
 
 Route::get('/temaSelection/{ID_CIDADE}', 'PageTemaSelecao@retorna_informacao');
 
-Route::get('/temaMetaIndicador/{ID_TEMA}', 'PageTemaMetaIndicadorController@retorna_detalhada');
-// Route::get('/detalhemeta', 'MetaController@atualizar');
-// Route::post('/detalhemeta', 'MetaController@meta_detalhada');
-// Route::get('/detalhemeta', 'MetaController@meta_detalhada');
+Route::get('/temaMetaIndicador/{ID_TEMA}/{ID_CIDADE}', 'PageTemaMetaIndicadorController@retorna_detalhada');
 
 Route::get('/popbeneficiada/cadastrar', function (){
 	return view('popBeneficiadaCadastra');
@@ -117,13 +95,6 @@ Route::post('/equipegoverno/cadastrar', 'EquipeGovernoController@cadastrar');
 Route::get('/equipegoverno/consultar', 'EquipeGovernoController@consultar');
 Route::post('/equipegoverno/consultar', 'EquipeGovernoController@atualizar');
 
-Route::get('/metaindicador/cadastrar', function (){
-	return view('metaIndicadorCadastra');
-});
-Route::post('/metaindicador/cadastrar', 'MetaIndicadorController@cadastrar');
-Route::get('/metaindicador/consultar', 'MetaIndicadorController@consultar');
-Route::post('/metaindicador/consultar', 'MetaIndicadorController@atualizar');
-
 Route::get('/prestaacao/cadastrar', function (){
 	return view('prestaAcaoCadastra');
 });
@@ -138,12 +109,21 @@ Route::post('/responsavelindicador/cadastrar', 'ResponsavelIndicadorController@c
 Route::get('/responsavelindicador/consultar', 'ResponsavelIndicadorController@consultar');
 Route::post('/responsavelindicador/consultar', 'ResponsavelIndicadorController@atualizar');
 
+Route::get('/prestacaoindicador', function () {
+    return view('prestacaoIndicadorPrincipal');
+});
+
 Route::get('/prestacaoindicador/cadastrar', function (){
     return view('prestacaoIndicadorCadastra');
 });
+
 Route::post('/prestacaoindicador/cadastrar', 'PrestacaoIndicadorController@cadastrar');
 Route::get('/prestacaoindicador/consultar', 'PrestacaoIndicadorController@consultar');
 Route::post('/prestacaoindicador/consultar', 'PrestacaoIndicadorController@atualizar');
+
+Route::get('/prestacaoprojeto', function () {
+    return view('prestacaoProjetoPrincipal');
+});
 
 Route::get('/prestacaoprojeto/cadastrar', function (){
     return view('prestacaoProjetoCadastra');
@@ -201,18 +181,12 @@ Route::get('/principal', function(){
     return view('index');
 });
 
-
-
 Route::get('/QuemSomos', function () {
     return view('QuemSomos');
 });
 
 Route::get('/ToDeOlho', function () {
     return view('ToDeOlho');
-});
-
-Route::get('/PrestConta', function () {
-    return view('PrestacaoDeConta');
 });
 
 Route::get('/contato', function (){
@@ -223,11 +197,6 @@ Route::get('/parceiros', function (){
     return view('parceiros');
 });
 
-// Route::get('usuarioDetalhar/{nome}',['as' => 'UsuarioDetalhar', 'uses' => 'controllerUsuarios@detalhar']);
-
-Route::post('/_detalhe=_metaID', 'MetaController@meta_detalhada');
-Route::get('/_detalhe=_metaID', 'MetaController@meta_detalhada');
-
 Route::get('/cadastrogestaosolo', 'GestaoSoloController@consultar');
 Route::post('/cadastrogestaosolo', 'GestaoSoloController@cadastrar');
 
@@ -236,3 +205,12 @@ Route::post('/cadastrometasolo', 'MetaSoloController@cadastrar');
 
 Route::get('/cadastroindicadorsolo', 'IndicadorSoloController@consultar');
 Route::post('/cadastroindicadorsolo', 'IndicadorSoloController@cadastrar');
+
+Route::get('/cadastroacaosolo', 'AcaoSoloController@consultar');
+Route::post('/cadastroacaosolo', 'AcaoSoloController@cadastrar');
+
+Route::get('/cadastroprestacaosolo', 'PrestAcaoSoloController@consultar');
+Route::post('/cadastroprestacaosolo', 'PrestAcaoSoloController@cadastrar');
+
+Route::get('/cadastroprestindicadorsolo', 'PrestIndicadorSoloController@consultar');
+Route::post('/cadastroprestindicadorsolo', 'PrestIndicadorSoloController@cadastrar');

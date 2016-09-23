@@ -13,7 +13,7 @@
         <h1>População Beneficiada</h1>
             <input type="submit" value="Cadastrar" class="btn-primary btn-pad" onclick="location.href= 'popbeneficiada/cadastrar'">
             <input type="submit" value="Atualizar" class="btn-primary btn-pad" onclick="location.href= 'popbeneficiada/consultar'">
-            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/principal'">
+            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/principal'">
             </div>
             </div>
         </section>

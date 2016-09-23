@@ -100,7 +100,7 @@
                             
                             <input type="submit" value="Cadastrar" class="btn-primary btn-pad"></input><br><br>
                         </form>-->
-                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/meta'"> 
+                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/meta'"> 
                 </div>
             </div>
         </section>

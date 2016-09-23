@@ -12,7 +12,7 @@
         <h1>Equipe Governo</h1>
             <input type="submit" value="Cadastrar" class="btn-primary btn-pad" onclick="location.href= 'equipegoverno/cadastrar'">
             <input type="submit" value="Atualizar" class="btn-primary btn-pad" onclick="location.href= 'equipegoverno/consultar'">
-            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/principal'">
+            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/'">
             </div>
             </div>
         </section>

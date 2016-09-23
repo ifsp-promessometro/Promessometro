@@ -18,7 +18,7 @@
                             <input type="text" name="ID_MEMBRO"></input><br><br>
                             <input type="submit" value="Cadastrar" class="btn-primary btn-pad"></input><br><br>
                             </form>
-                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/equipegoverno'"> 
+                            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/equipegoverno'"> 
                 </div>
             </div>
         </section>

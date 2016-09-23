@@ -67,6 +67,4 @@ class MetaController extends Controller
 
 		return view ('metaRetorna', ['meta'=>$meta]);
 	}
-
-	
 }

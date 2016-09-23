@@ -22,7 +22,7 @@
                         @endforeach
                         <br><br>
                         </form>
-                        <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/responsavelindicador'"> 
+                        <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/responsavelindicador'"> 
                     </div>
             </div>
         </section>

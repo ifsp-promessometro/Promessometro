@@ -1,20 +1,13 @@
-
 <?php
    session_start();
-
 ?>
-
 
 @extends ('navbar')
 
-
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>Promessômetro Nacional</title>
-
-   
-
 </head>
 
 <body>
@@ -45,46 +38,47 @@
                     </div>
                     
                     <div>
-                        <label class="subtitulo4">Estado:</label>
-                        <select id="estado" class="input smallinputlist" onChange="carregaCidade(this.value);">                            
-                            <option value="">Selecione</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="DF">Distrito Federal</option>
-                            <option value="ES">Espirito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="PR">Paraná</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="subtitulo4">Cidade:</label>
-                        <select id="cidades" class="margin-bot input smallinputlist">
-                            <option value="0">Selecione o estado</option>
-                        </select>                      
-                    </div>
-                    <button class="btn btn-info btn-primary btn-lg margin-tmi">Achar metas!</button>
-
+                        <form action="retornaUrlCidade.php" method="post">
+                            <label class="subtitulo4">Estado:</label>
+                            <select id="estado" class="input smallinputlist" onChange="carregaCidade(this.value);">                            
+                                <option value="">Selecione o estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espirito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="PR">Paraná</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="subtitulo4">Cidade:</label>
+                            <select id="cidades" name="cidade" class="margin-bot input smallinputlist">
+                                <option value="">Selecione a cidade</option>
+                            </select>                      
+                        </div>
+                        <button class="btn btn-info btn-primary btn-lg margin-tmi">Achar metas!</button>
+                    </form>
                 </div>
             </div>
         </div>

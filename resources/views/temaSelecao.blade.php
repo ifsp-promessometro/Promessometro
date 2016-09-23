@@ -1,3 +1,7 @@
+<?php
+  session_start();
+ ?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -66,31 +70,6 @@
     });
   </script>
 
-  <script>
-    $( document ).ready(function() {
-      $("#test-circle1").circliful({
-        animation: 1,
-        animationStep: 3,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        percent: 1  
-      });
-    });
-  </script>
-
-  <script>
-    $( document ).ready(function() {
-      $("#test-circle2").circliful({
-        animation: 1,
-        animationStep: 3,
-        foregroundBorderWidth: 15,
-        backgroundBorderWidth: 15,
-        percent: 90
-      });
-    });
-  </script>
-
-
 </head>
 <body>        
   <section>
@@ -104,24 +83,17 @@
             </div>
           </div>
 
-          <div class="col-md-2">
-            <div id="test-circle1">
+          <!-- <div class="col-md-2">
+          <div id="test-circle1">
               <label class="subtitulo3 promeblue graph-goalind">Metas</label>
             </div>
-          </div>
-
-          <div class="col-md-2">
-            <div id="test-circle2">
-              <label class="subtitulo3 promeblue graph-goalind">Indicadores</label>
-            </div>
-          </div>
+          </div> -->
 
           <div class="col-md-4">
             <div style ="padding-top:75px">
               <label class="subtitulo2 promeblue-claro centralizafonte">{{$cidade->NOME}}</label>
               <label class="subtitulo2 promeblue-claro centralizafonte">{{$cidade->POPULACAO}} Habitantes</label>
               <label class="subtitulo2 promeblue-claro centralizafonte">{{$cidade->AREAK2}} km²</label>
-              <label class="subtitulo2 promeblue-claro centralizafonte">Nome do Prefeito</label>
             </div>
           </div>
         </div>
@@ -132,168 +104,168 @@
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Saúde</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/1/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-plus glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Educação</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/2/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-education glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Cultura</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/3/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-knight glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Segurança</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/4/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-lock glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Cidadania</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/5/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-comment glyphicon-theme "></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Lazer</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/6/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-music glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Acessibilidade</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/7/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-sunglasses glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Dev. Cidade</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/8/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-signal glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Habitação</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/9/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-home glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Infraestrutura</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/10/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-stats glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Serviços Técnicos</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/11/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-wrench glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Turismo</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/12/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-plane glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Serviços Públicos</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/13/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-paperclip glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Trabalho e Renda</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/14/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-briefcase glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Abastecimento</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/15/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-scale glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Urbanismo</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/16/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-time glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Água/Saneamento</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/17/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-tint glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Sustentabilidade</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/18/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-leaf glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Dev. Urbano</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/19/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-fullscreen glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Administração</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/20/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-list-alt glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Gestão e Controle</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/21/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-object-align-right glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >R.Humanos</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/22/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-user glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Finanças</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/23/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-piggy-bank glyphicon-theme"></span>
             </button>
           </div>
 
           <div class="col-md-2 height-div">
             <P class="subtitulo3 centralizafonte" >Jurisdição</P>
-            <button class="button-theme">
+            <button class="button-theme" onclick="javascript:location.href='/Promessometro/public/temaMetaIndicador/24/{{$cidade->ID_CIDADE}}'">
               <span class="glyphicon glyphicon-plus glyphicon-theme"></span>
             </button>
           </div>

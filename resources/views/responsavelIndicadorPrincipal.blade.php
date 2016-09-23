@@ -13,7 +13,7 @@
         <h1>Responsável Indicador</h1>
             <input type="submit" value="Cadastrar" class="btn-primary btn-pad" onclick="location.href= 'responsavelindicador/cadastrar'">
             <input type="submit" value="Atualizar" class="btn-primary btn-pad" onclick="location.href= 'responsavelindicador/consultar'">
-            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/promessometro/public/principal'">
+            <input type="submit" value="Voltar" class="btn-primary btn-pad" onclick="location.href= '/Promessometro/public/'">
             </div>
             </div>
         </section>

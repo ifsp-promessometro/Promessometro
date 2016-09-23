@@ -22,6 +22,7 @@ use App\Meta;
 use App\Acao;
 use App\Membro;
 use App\Coligacao;
+use App\Equipe_Governo;
 use DB;
 
 
@@ -39,9 +40,11 @@ class StepLineController extends Controller
 		$acao = new Acao();
 		$membro = new Membro();
 		$vice = new Membro();
-		$coligacao = new Coligacao();
 		$vereador = new Membro();
 		$indicador = new Indicador();
+		$equipe_governopref = new Equipe_Governo();
+		$equipe_governovice = new Equipe_Governo();
+		$equipe_governovere = new Equipe_Governo();
 
 		$usuario -> NOME = $request -> input ('nome');
 		$usuario -> EMAIL = $request -> input ('email');
@@ -51,32 +54,18 @@ class StepLineController extends Controller
 		$usuario -> ID_OSA = $request -> input ('osa');
 		$usuario -> CARGO = $request -> input ('cargo');
 
-		$cidade -> ID_ESTADO = $request -> input ('estado');
-		$cidade -> NOME = $request -> input('cidade');
-		$cidade -> AREAK2 = $request -> input ('areak2'); 
-		$cidade -> POPULACAO = $request -> input ('num_habitantes');
-		$cidade -> END_PORTAL = $request -> input ('portal_cidade');
-
-		$membro -> NOME = $request -> input ('nome_prefeito');
-		$membro -> ID_CARGO_MEMBRO = 1;
-		$membro -> ID_PARTIDO = $request -> input('partido_prefeito');
-
-		$vice -> NOME = $request -> input ('nome_vice');
-		$vice -> ID_CARGO_MEMBRO = 2;
-		$vice -> ID_PARTIDO = $request -> input('partido_prefeito');
-
-		$coligacao -> NOME = $request -> input('coligacao');
-
-		$vereador -> NOME = $request -> input('nome_vereador');
-		$vereador -> ID_CARGO_MEMBRO = 3;
-		$vereador -> ID_PARTIDO = $request -> input('partido_vereador');
+		$ID_CIDADE = $request -> input('cidade');
+		$AREA_CIDADE = $request -> input('areak2');
+		$POP_CIDADE = $request -> input('num_habitantes');
+		$END_PORTAL_CIDADE = $request -> input('portal_cidade');
+		Cidade::where('ID_CIDADE', '=', $ID_CIDADE)
+		->update(['AREAK2' => $AREA_CIDADE, 'POPULACAO' => $POP_CIDADE, 'END_PORTAL' => $END_PORTAL_CIDADE]);
 
 		$gestao -> PROMESSA_CAMPANHA = $request -> input('promessa_campanha');
 		$gestao -> DATA_INICIO = $request -> input('DATA_INICIO');
 		$gestao -> DATA_FIM = $request -> input('DATA_FIM');
 		$gestao -> ID_CIDADE = $request -> input('cidade');
 		$gestao -> save();
-
 		
 		$tempmeta = DB::table('gestao') -> orderBy('ID_GESTAO','desc')->first();
 		$meta -> DESCRICAO = $request -> input('descricao_meta');
@@ -85,7 +74,38 @@ class StepLineController extends Controller
 		$meta -> DATA_FIM = $request -> input('data_fim_meta');
 		$meta -> ID_GESTAO = $tempmeta -> ID_GESTAO;
 		$meta -> ID_TEMA = $request -> input('tema');
+		$meta -> ID_CIDADE = $request -> input('cidade');
 		$meta -> save();
+
+		$membro -> NOME = $request -> input ('nome_prefeito');
+		$membro -> ID_CARGO_MEMBRO = 1;
+		$membro -> ID_PARTIDO = $request -> input ('partido_prefeito');
+		$membro -> save();
+
+		$tempmembro = DB::table('membro') -> orderBy('ID_MEMBRO', 'desc')->first();
+		$equipe_governopref -> ID_GESTAO = $tempmeta -> ID_GESTAO;
+		$equipe_governopref -> ID_MEMBRO = $tempmembro -> ID_MEMBRO;
+		$equipe_governopref -> save();
+
+		$vice -> NOME = $request -> input ('nome_vice');
+		$vice -> ID_CARGO_MEMBRO = 2;
+		$vice -> ID_PARTIDO = $request -> input ('partido_prefeito');
+		$vice -> save();
+
+		$tempmembro = DB::table('membro') -> orderBy('ID_MEMBRO', 'desc')->first();
+		$equipe_governovice -> ID_GESTAO = $tempmeta -> ID_GESTAO;
+		$equipe_governovice -> ID_MEMBRO = $tempmembro -> ID_MEMBRO;
+		$equipe_governovice -> save();
+
+		$vereador -> NOME = $request -> input('nome_vereador');
+		$vereador -> ID_CARGO_MEMBRO = 3;
+		$vereador -> ID_PARTIDO = $request -> input ('partido_vereador');
+		$vereador -> save();
+
+		$tempmembro = DB::table('membro') -> orderBy('ID_MEMBRO', 'desc')->first();
+		$equipe_governovere -> ID_GESTAO = $tempmeta -> ID_GESTAO;
+		$equipe_governovere -> ID_MEMBRO = $tempmembro -> ID_MEMBRO;
+		$equipe_governovere -> save();
 
 		$tempacao = DB::table('meta') -> orderBy('ID_META', 'desc')->first();
 		$acao -> DESCRICAO = $request -> input('descricao_acao');
@@ -95,24 +115,20 @@ class StepLineController extends Controller
 		$acao -> INVESTIMENTO_EXECUTADO = $request -> input('investimento_executado');
 		$acao -> ID_META = $tempacao -> ID_META;
 
-
-
-
 		$indicador -> ID_GESTAO = $tempmeta -> ID_GESTAO;
 		$indicador -> NOME = $request -> input('nome_indicador');
 		$indicador -> DESCRICAO = $request -> input('descricao_indicador');
 		$indicador -> PROTOCOLO = $request -> input('protocolo_indicador');
 		$indicador -> FONTE = $request -> input('fonte_indicador');
 		$indicador -> UND_MEDIDA = $request -> input('und_medida1');
-		$indicador -> ID_TEMA = 1;
+		$indicador -> VALOR_META = $request -> input('valor_meta');
+		$indicador -> ID_TEMA = $request -> input('tema');
+		$indicador -> ID_CIDADE = $request -> input('cidade');
+
+
 	
 		
 		$usuario -> save();
-		$cidade -> save();
-		$membro -> save();
-		$vice -> save();
-		$vereador -> save();
-		$coligacao -> save();
 		$acao -> save();
 		$indicador -> save();
 		

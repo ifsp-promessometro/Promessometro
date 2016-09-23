@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -80,7 +84,8 @@
             <div id="testcircle"></div>
           </div>
            
-		      @if($row == 0 )
+ 
+		@if($row == 0 )
             <form action= "{{ $page->ID_META }}/SeguirMeta" method="post" name="form_follow">
 
               <a href="detalhemeta/{ID_META}"><button TYPE="submit" class="pull-left btn btn-info btn-lg">Seguir Meta</button></a>

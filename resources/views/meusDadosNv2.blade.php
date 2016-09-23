@@ -1,8 +1,3 @@
-
-<?php 
-    @session_start();
- ?>
-
 @extends ('navbar')
 
 <!DOCTYPE html>
@@ -30,6 +25,9 @@
                         <li></li><a href="cadastrogestaosolo"><label class="fonte-menudados agencyfb"><li class="marcador">Gestão</li></label></a>
                         <li></li><a href="cadastrometasolo"><label class="fonte-menudados agencyfb"><li class="marcador">Metas</li></label></a>
                         <li></li><a href="cadastroindicadorsolo"><label class="fonte-menudados agencyfb"><li class="marcador">Indicadores</li></label></a>
+                        <li></li><a href="cadastroacaosolo"><label class="fonte-menudados agencyfb"><li class="marcador">Ações</li></label></a>
+                        <li></li><a href="cadastroprestacaosolo"><label class="fonte-menudados agencyfb"><li class="marcador">Prest. Ação</li></label></a>
+                        <li></li><a href="cadastroprestindicadorsolo"><label class="fonte-menudados agencyfb"><li class="marcador">Prest. Indicador</li></label></a>
                     </div>
                 </div> 
                 <label onclick="exibirForm3()" class="fonte-menudados agencyfb">Administrar metas</label>
@@ -44,13 +42,13 @@
                     <h3 class="subtitulo3 promeblue pointline margin-bot"><i class="glyphicon glyphicon-pencil formataglyp"></i> Metas</h3>
                         <div class="margin-p">
                             <h1 class="texto parag-inline">
-                                <label class="contador geralnotificacoes parag-inline"></label>
+                                <label class="contador geralnotificacoes parag-inline">0</label>
                             Que você ainda não finalizou
                             </h1>
                         </div>
                         <div class="margin-p largemargin-bot">
                             <h1 class="texto parag-inline">
-                                <label class="contador geralnotificacoes parag-inline"></label>
+                                <label class="contador geralnotificacoes parag-inline">0</label>
                             Comentários em suas metas
                             </h1>
                         </div>
@@ -78,27 +76,42 @@
                     <h3 class="subtitulo3 promeblue">Dados da conta</h3>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">E-mail:</label>
-                        <p class="parag-inline"><?php 
-                        echo $_SESSION['EMAIL'] ?></p>
+                        <p class="parag-inline"><?php
+                         echo $_SESSION['EMAIL']
+                         ?></p>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Senha:</label>
-                        <p class="parag-inline"><?php 
-                        echo $_SESSION['SENHA'] ?></p>
-                        <a>Alterar</a>
+                        <form name="form_senha" method="post" action="alteraSenha-User.php">
+                            <input type="password" value="<?php 
+                        echo $_SESSION['SENHA']; ?>" name="senha_user">
+
+                        <INPUT type="submit" value="Alterar">    
+                        </form>
+                        
                     </div>
 
                     <h3 class="subtitulo3 promeblue">Dados pessoais</h3>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Nome:</label>
                         <p class="parag-inline"><?php 
-                        echo $_SESSION['NOME'] ?></p>
+                            echo $_SESSION['NOME'];
+                         ?></p>
                     </div>
                     <div class="margemleft-meusdados">
-                        <label class="subtitulo4 parag-inline">Cargo:</label>
-                        <p class="parag-inline"><?php 
-                        echo $_SESSION['CARGO'] ?></p>
-                        <a>Alterar</a>
+                        
+                        
+                        <form name="form_cargo" method="post" action="alteraCargo-User.php">
+                            <label class="subtitulo4 parag-inline">Cargo:</label>
+                            <input type="text" value="<?php 
+                            echo $_SESSION['CARGO']; ?>" name="cargo_user" readonly>
+                            <br>
+                            <br>
+                            <label class="subtitulo4 parag-inline">Novo Cargo:</label>
+                            <input type="text" name="cargo_user_new">   
+
+                        <INPUT type="submit" value="Alterar">    
+                        </form>
                     </div>
                     <div class="margemleft-meusdados">
                         <label class="subtitulo4 parag-inline">Desativar conta:</label>
@@ -134,7 +147,7 @@
                             <div class="col-md-8">
                                 <input type = "hidden" name="ID_META" value="{{ $aux->ID_META }}">
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_TEMA }}</div>
-                                <div class="col-md-3 meusdados-texto">{{ $aux->OBJETIVO }}</div>
+                                <div class="col-md-3 meusdados-texto">{{ $aux->DESCRICAO }}</div>
                                 <div class="col-md-1 meusdados-texto">100,0</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_GESTAO }}</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->DATA_INICIO }}</div>
@@ -186,7 +199,7 @@
                             <div class="col-md-8">
                                 <input type = "hidden" name="ID_META" value="{{ $aux->ID_META }}">
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_TEMA }}</div>
-                                <div class="col-md-3 meusdados-texto">{{ $aux->OBJETIVO }}</div>
+                                <div class="col-md-3 meusdados-texto">{{ $aux->DESCRICAO }}</div>
                                 <div class="col-md-1 meusdados-texto">100,0</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->ID_GESTAO }}</div>
                                 <div class="col-md-2 meusdados-texto">{{ $aux->DATA_INICIO }}</div>

@@ -8,21 +8,7 @@
 
 <body>        
     <div class="cadastra-stepline">
-        <div class="formatacao-telas-cadastro">
-            <div style="height: 120px; background-color: #ffffff; margin-bottom: 50px;">
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-8" style="background-color: #deebf6; height: 120px;">
-                    <div class="col-md-1">
-                    </div>
-                    <div>
-                        <a href="cadastro"><img src="img/1-sel-am.png"></a>
-                        <a href="cadastro"><img src="img/2-vm.png"></a>
-                        <a href="cadastro"><img src="img/3-vm.png"></a>
-                        <a href="cadastro"><img src="img/4-vm.png"></a>
-                    </div>
-                </div>
-            </div>                   
+        <div class="formatacao-telas-cadastro">                   
             <div class="container">
                 <div class="col-md-2"></div>
                 <div class="col-md-8 major-box-validation">

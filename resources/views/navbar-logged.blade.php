@@ -21,7 +21,7 @@
     <nav class="navbar navbar-inverse2 navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/promessometro/public">Promessômetro</a>
+                <a class="navbar-brand" href="/Promessometro/public">Promessômetro</a>
             </div>
             <div id="navbar1" class="navbar-collapse collapse navbar-right" style="margin-left:10px">
                 <ul class="nav navbar-nav ; col-sm-12">
@@ -39,7 +39,7 @@
         </div>
         <div class="second-div">
         <a href="QuemSomos" style="margin-left:10px">Quem Somos</a>
-        <a href="ToDeOlho"> Blog Tô de Olho</a>
+        <a href="ToDeOlho"> Blog To de Olho</a>
         <a href="parceiros"> Parceiros</a>
         <a href="contato"> Contato</a>
     </div>
